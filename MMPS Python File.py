@@ -451,7 +451,7 @@ class InteractiveImageLabel(QLabel):
             elif event.button() == Qt.RightButton:
                 self.parent_widget.finish_polygon()
 
-    def mouseDoubleClickEvent(self, event)
+    def mouseDoubleClickEvent(self, event):
         if self.polygon_mode and self.parent_widget:
             self.parent_widget.finish_polygon()
 
