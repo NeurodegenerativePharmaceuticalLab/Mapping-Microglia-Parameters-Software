@@ -241,5 +241,5 @@ The Microglia Analysis Tool provides a comprehensive workflow for processing mic
 For best results, take time to carefully annotate your images and verify the quality of your masks before running batch calculations. Consistent, accurate annotations lead to reliable, reproducible measurements.
 
 Happy analyzing!
-<img width="451" height="654" alt="image" src="https://github.com/user-attachments/assets/f67ff4fd-2cee-4d82-aca3-94a9a530dfb5" />
+
 
