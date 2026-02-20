@@ -1,6 +1,3 @@
-# Mapping-Microglia-Parameters-Software
-This repository contains the standalone "Mapping Microglia Parameters Software (MMPS)" and associated files. Please see our associated JOVE publication, supporting documents within this repository, or below for validation and usage.  
-
 Mapping Microglia Parameters Software
 User Guide
 
@@ -241,5 +238,4 @@ The Microglia Analysis Tool provides a comprehensive workflow for processing mic
 For best results, take time to carefully annotate your images and verify the quality of your masks before running batch calculations. Consistent, accurate annotations lead to reliable, reproducible measurements.
 
 Happy analyzing!
-
 
