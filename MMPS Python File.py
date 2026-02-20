@@ -87,7 +87,7 @@ class MorphologyCalculator:
             
             # Roundness: minor/major ratio (unchanged)
             if major_axis > 0:
-                params['roundness'] = minor_axis / major_axis
+                params['roundness'] = axis_ratio**2
             else:
                 params['roundness'] = 0
 
