@@ -2,6 +2,10 @@
 
 ## User Guide
 
+
+### Please See the Associated MMPs Guide.docx and publication for more detailed steps and images
+
+
 Introduction to Microglia Morphometry Methodology
 Microglia morphometry analysis provides a quick, unbiased, and accurate mapping of microglia to determine microglial characteristics such as the number of branches, size, and more to determine microglial activity and activation state. This works based on several principles. The user identifies cells and outlines the soma. This will be used in future calculations to determine what constitutes branches, eccentricity etc. on each microglia. Mask generation is the most important aspect as this maps user-selected microglia, based on the pixel intensity, to create several “masks”. These masks represent different sizes (μm²) of the microglia. Here, this program maps microglia at 200, 300, 400, 500, 600, 700, and 800 μm². The user can determine which mask size best captures the differences they are studying. If unsure, 500 μm² is a typical mask size used by multiple groups. 
 Introduction to this Application
