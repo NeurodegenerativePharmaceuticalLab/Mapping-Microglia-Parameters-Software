@@ -100,7 +100,7 @@ class MorphologyCalculator:
 
             extremities = np.array([top_point, bottom_point, left_point, right_point])
             distances = np.sqrt(np.sum((extremities - centroid) ** 2, axis=1))
-            params['cell_spread'] = np.mean(distances) * self.pixel_size
+            params['average_centroid_distance'] = np.mean(distances) * self.pixel_size
 
             if soma_area_um2 is not None:
                 params['soma_area'] = soma_area_um2
@@ -108,7 +108,7 @@ class MorphologyCalculator:
                 params['soma_area'] = props.area * 0.1 * (self.pixel_size ** 2)
         else:
             params = {k: 0 for k in ['perimeter', 'mask_area', 'eccentricity',
-                                     'roundness', 'cell_spread', 'soma_area']}
+                                     'roundness', 'average_centroid_distance', 'soma_area']}
         return params
 
 
@@ -2628,7 +2628,7 @@ class MicrogliaAnalysisGUI(QMainWindow):
             writer.writerow(['mask_filename', 'soma_filename', 'image_name', 'soma_id', 'soma_idx',
                              'soma_x', 'soma_y', 'soma_area_um2', 'cell_area_um2',
                              'pixel_size_um', 'perimeter', 'eccentricity', 'roundness',
-                             'cell_spread', 'animal_id', 'treatment'])
+                             'average_centroid_distance', 'animal_id', 'treatment'])
 
             for result in results:
                 img_name = result['image_name']
@@ -2660,7 +2660,7 @@ class MicrogliaAnalysisGUI(QMainWindow):
                     result.get('perimeter', 0),
                     result.get('eccentricity', 0),
                     result.get('roundness', 0),
-                    result.get('cell_spread', 0),
+                    result.get('average_centroid_distance', 0),
                     result.get('animal_id', ''),
                     result.get('treatment', '')
                 ])
