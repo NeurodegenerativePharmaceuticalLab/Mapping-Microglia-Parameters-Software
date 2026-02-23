@@ -1,12 +1,14 @@
-Mapping Microglia Parameters Software
-User Guide
+# Mapping Microglia Parameters Software
+
+## User Guide
 
 Introduction to Microglia Morphometry Methodology
 Microglia morphometry analysis provides a quick, unbiased, and accurate mapping of microglia to determine microglial characteristics such as the number of branches, size, and more to determine microglial activity and activation state. This works based on several principles. The user identifies cells and outlines the soma. This will be used in future calculations to determine what constitutes branches, eccentricity etc. on each microglia. Mask generation is the most important aspect as this maps user-selected microglia, based on the pixel intensity, to create several “masks”. These masks represent different sizes (μm²) of the microglia. Here, this program maps microglia at 200, 300, 400, 500, 600, 700, and 800 μm². The user can determine which mask size best captures the differences they are studying. If unsure, 500 μm² is a typical mask size used by multiple groups. 
 Introduction to this Application
 This application, “Mapping Microglia Parameters Software”, is a comprehensive desktop application designed for immunohistochemistry processing and analyzing microscopy images of microglia cells. This software provides an intuitive graphical interface for background subtraction, manual cell annotation, morphological parameter calculation, and batch processing of multiple images. The application calculates simple characteristics of the cells. More complex analysis can be done by utilizing the jython files. This is recommended for in-depth microglial morphometry analysis. 
 
-Key Features
+### Key Features
+
 •	Background subtraction using rolling ball algorithm, deionization, and sharpening
 •	Manual annotation of soma locations and soma outlines to increase accuracy
 •	Fast mask generation and QA
@@ -14,13 +16,15 @@ Key Features
 •	Batch processing for multiple images
 •	Export results to CSV format with metadata
  Getting Started
-Workflow Overview
+### Workflow Overview
+
 The typical workflow consists of three main stages:
 1.	Image Processing - Load images, apply background subtraction, and optional filters
 2.	Manual Annotation - Mark soma locations and draw soma boundaries
 3.	Batch Analysis - Review annotations, generate masks, and calculate morphological parameters
 
- Step 1: File Selection
+### Step 1: File Selection
+
 This section handles loading images and applying preprocessing steps to improve image quality. 
 
 Images that are to be used should be stored exclusively in one folder (ex. “raw_data_folder”). Only .tif or .TIF files are supported!
@@ -32,20 +36,10 @@ Loading Images
 7.	Click on an image name to preview it. Select an image by checking the box next to it. Alternatively, to use all, click Select All, and click Clear All to deselect all. The circle next to the image names will be updated to reflect the stage the image is on. A full legend can be found at the bottom by clicking Legend
 8.	Click Image Labeling if you would like to add the animal name and treatment group of each image at this stage. If not, it will prompt you at the end
 
+### Step 2: Parameters
 
+#### Background Subtraction
 
-
-
-
-
-
-
-
-
-The image above shows the location of the buttons to click for this step. After loading the images, it looks like the image below.
- 
-Step 2: Parameters
-Background Subtraction
 To improve the accuracy of the mask generation (and subsequently the associated calculations), cleaning the images is a critical step. At any point, click Preview Current Image in the middle left panel to see how selected algorithms would clean the image. Note: This step is reversible as this image will NOT be used or saved. It is simply a preview.
 
 At minimum, background subtraction with the rolling ball method should be done as it removes uneven illumination and improves contrast:
@@ -54,7 +48,8 @@ At minimum, background subtraction with the rolling ball method should be done a
 ○	Larger values: Better for large, slowly varying backgrounds
 •	Click the button Preview Current Image to see the effect on the selected image
 
-Optional Filters (Recommended)
+#### Optional Filters (Recommended)
+
 Denoising
 •	Check the Enable Denoising checkbox
 •	Adjust Denoising Size (default: 3)
@@ -66,9 +61,6 @@ Sharpening
 •	Enhances edges and fine details
 *It is highly recommended to use a combination of these methods and previewing the results to create the best possible image
 
-Utilizing a combination of the cleaning options, a good example of an image to use is below. Notice that the “Preview” tab is selected. 
-
- 
 Processing Images
 When the image preview is acceptable:
 9.	Click Process Selected button
@@ -76,7 +68,8 @@ When the image preview is acceptable:
 
 After processing, the image will have a green dot next to the name and the image will appear under the “Processed” tab.
 
-  Step 3: Batch Processing
+#### Step 3: Batch Processing
+
 This tab allows you to manually mark microglia somas, define cell boundaries, and QA generated masks.
 
 Marking Soma Locations
@@ -85,9 +78,6 @@ Marking Soma Locations
 13.	Red markers will appear at each clicked location
 14.	On the keyboard, press Enter/Return when done
 
-Below, I selected a few sample somas. 
-
- 
 
 Drawing Cell Masks
 After marking somas, you need to define the boundary of each cell’s soma:
@@ -101,9 +91,6 @@ After marking somas, you need to define the boundary of each cell’s soma:
 •	Cancel: Exit mask drawing mode
 •	
 17.	Repeat for each soma
-Below is an example of a soma that has been successfully outlined. 
-
- 
 
 Setting Parameters
 Before you proceed with mask generation, confirm that the pixel size (in micrometers/pixel) is correct. If not, update it as it will influence the calculations.
@@ -115,22 +102,21 @@ click on the keyboard “A” to accept and “R” to reject. Rejecting a mask 
 
 Note: Mask generation is not perfect! Make sure that generated masks do not capture blurry areas of the microglia nor miss branches. This will skew the calculations. If in doubt, it is almost always best to reject the mask and either (A) re-process the image to improve the mask generation, or (B) capture another image
 
-Below is an example of an appropriate mask.
- 
 Calculating Simple Characteristics
 21.	Again, ensure pixel size is correct!
 22.	Click Calculate Simple Characteristics button. This can take a bit depending on the number of cells/complexity
 23.	Enter animal name and treatment if not done in Step 8
 24.	Results will be automatically saved in a .csv files in the output folder. Each image will receive its own .csv file and one .csv file named “combined_morphology_results.csv” with all the data
 
-Calculated Parameters
+#### Calculated Parameters
+
 The program calculates the following morphological parameters for each cell:
 •	Roundness: Ratio of minor to major axis (0-1, where 1 is perfectly round)
 •	Eccentricity: Ratio of major to minor axis (measures elongation)
 •	Soma Area: Area of the cell body in μm²
 •	Mask Area: Total area of the entire cell including processes in μm²
 •	Perimeter: Perimeter of the cell mask in μm
-•	Cell Spread: Average distance from centroid to extremities in μm
+•	Average Centroid Distance (formerly known as Cell Spread): Average distance from centroid to extremities in μm
 
 Export and Results
 Output Files
@@ -155,7 +141,8 @@ Results Files (CSV)
 •	[image_name]_morphology_results.csv: Individual results for each image
 •	mask_metadata.csv: Metadata linking masks to images and parameters (in masks/ directory)
 
-CSV File Structure
+#### CSV File Structure
+
 The results CSV files contain the following columns:
 •	image_name - Original image filename
 •	animal_id - Animal identifier (if provided)
@@ -164,7 +151,8 @@ The results CSV files contain the following columns:
 •	soma_idx - Index of the soma (0-based)
 •	All calculated morphological parameters (roundness, eccentricity, etc.)
 
- Tips and Best Practices
+### Tips and Best Practices
+
 Image Quality
 •	Use high-quality TIFF images with good contrast
 •	Avoid over-processing images – processing images can increase accuracy on the soma and primary branches but often comes at the cost of smaller branches
@@ -188,8 +176,9 @@ Data Management
 •	Keep raw and processed images in separate directories
 •	Back up your mask files - they represent significant annotation time
 •	Document your analysis parameters for reproducibility
+•	Ensure enough disk space for generation of mask and soma images
 
- Troubleshooting
+Troubleshooting
 Common Issues
 Program won't start
 •	Verify all dependencies are installed
@@ -226,10 +215,10 @@ If you encounter issues not covered here:
 •	Check the log window for error messages
 •	Document the steps that led to the problem
 •	Note any error messages displayed
-•	Contact technical support with this information
 
- Conclusion
-The Microglia Analysis Tool provides a comprehensive workflow for processing microscopy images and quantifying microglia morphology. By following this guide, you should be able to successfully:
+#### Conclusion
+
+MMPS provides a comprehensive workflow for processing microscopy images and quantifying microglia morphology. By following this guide, you should be able to successfully:
 •	Load and preprocess microscopy images
 •	Manually annotate microglia somas and cell boundaries
 •	Calculate morphological parameters for batch analysis
@@ -238,4 +227,3 @@ The Microglia Analysis Tool provides a comprehensive workflow for processing mic
 For best results, take time to carefully annotate your images and verify the quality of your masks before running batch calculations. Consistent, accurate annotations lead to reliable, reproducible measurements.
 
 Happy analyzing!
-
