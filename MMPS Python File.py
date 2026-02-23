@@ -63,7 +63,6 @@ class MorphologyCalculator:
     def calculate_all_parameters(self, cell_mask, soma_centroid, soma_area_um2=None):
         """Calculate ONLY simple parameters - Sholl, Fractal, Hull, Skeleton done in ImageJ"""
         params = {}
-        # ✅ ONLY: Simple descriptors (fast Python metrics)
         params.update(self._calculate_simple_descriptors(cell_mask, soma_area_um2))
 
         return params
@@ -85,7 +84,7 @@ class MorphologyCalculator:
             else:
                 params['eccentricity'] = 0
             
-            # Roundness: minor/major ratio (unchanged)
+            # Roundness: minor/major ratio 
             if major_axis > 0:
                 params['roundness'] = axis_ratio**2
             else:
