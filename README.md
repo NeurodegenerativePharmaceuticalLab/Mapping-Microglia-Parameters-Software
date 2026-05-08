@@ -7,9 +7,15 @@
 
 
 
+## Tested Environment
 
+MMPS was developed and tested on macOS using the following laboratory computer configuration:
 
-
+- Operating system: macOS
+- Processor: [insert CPU/chip model, e.g., Apple M-series or Intel processor]
+- Memory/RAM: [insert RAM, e.g., 8 GB / 16 GB / 32 GB]
+- Python: Python 3.x
+- Storage: Local solid-state drive recommended
 
 
 
